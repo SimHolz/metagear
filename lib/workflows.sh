@@ -86,7 +86,9 @@ function run_workflows() {
 function get_config() {
     workflow="$1"
     shift
-
+    
+    local config=""
+    
     while (( $# > 0 )); do
         case "$1" in
             --input)
