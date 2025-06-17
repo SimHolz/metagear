@@ -30,7 +30,9 @@ check_command "$COMMAND"
 
 mkdir -p $LAUNCH_DIR/.metagear
 
-custom_config_files=( $PIPELINE_DIR/conf/metagear/$COMMAND.config $METAGEAR_DIR/metagear.config )
+argument_config_file=$(get_config $COMMAND $@)
+
+custom_config_files=( $PIPELINE_DIR/conf/metagear/$COMMAND.config $METAGEAR_DIR/metagear.config  $argument_config_file)
 metagear_config_files=( $PIPELINE_DIR/conf/metagear/*.config )
 all_config_files=( "${metagear_config_files[@]}" "${custom_config_files[@]}" )
 

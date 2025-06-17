@@ -46,6 +46,10 @@ function run_workflows() {
                 shift
                 outdir="$1"
                 ;;
+            --config)
+                shift
+                config="$1"
+                ;;    
             *)
                 echo "Invalid option: $1"
                 usage
@@ -79,3 +83,30 @@ function run_workflows() {
     echo "--workflow $workflow --input $default_input_file --outdir $outdir"
 }
 
+function get_config() {
+    workflow="$1"
+    shift
+
+    while (( $# > 0 )); do
+        case "$1" in
+            --input)
+                shift
+                input_file="$1"
+                ;;
+            --outdir)
+                shift
+                outdir="$1"
+                ;;
+            --config)
+                shift
+                config="$1"
+                ;;
+            *)
+                echo "Invalid option: $1"
+                usage
+                ;;
+        esac
+        shift
+    done
+    echo $config
+}
