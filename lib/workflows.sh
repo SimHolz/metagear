@@ -50,6 +50,10 @@ function run_workflows() {
                 shift
                 config="$1"
                 ;;    
+            --config)
+                shift
+                config="$1"
+                ;;    
             *)
                 echo "Invalid option: $1"
                 usage
